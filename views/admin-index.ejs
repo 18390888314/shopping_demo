@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <title>后台管理</title>
+    <!-- BOOTSTRAP CORE STYLE CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <!-- FONT AWESOME CSS -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE CSS -->
+    <link href="css/style1.css" rel="stylesheet" />
+    <!-- Google	Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Nova+Flat' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css' />
+</head>
+<body>
+    <div id="head">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <a href="index.html">
+                    <img src="/images/logo.png"  />
+                        </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 text-center" >
+                     <img src="/images/top-mouse.png "  class="header-mid" />
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <h4><span>Call:</span> +01-4589-987-567</h4>
+                    <h4><span>E-mail:</span> info@domain.com</h4>
+                </div>
+                
+            </div>
+        </div>
+    </div>    <section>
+        <div class="container">
+            <div class="row noti-div">
+                <div class="col-lg-4 col-md-4 col-sm-4  text-center">
+                    <a href="/admin">
+                        <div class="alert alert-danger">
+                            <i class="fa fa-user fa-4x"></i>
+                            <span class="label label-info">用户管理</span>
+                            <span class="label label-danger"><%= result %></span>
+                            <p>
+                             管理用户请点击这里
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4  text-center">
+                    <a href="/admin/goodList">
+                        <div class="alert alert-success">
+                            <i class="fa fa-folder-open-o fa-4x"></i>
+                            <span class="label label-warning">商品管理</span>
+                            <p>
+                                商品管理请点击这里
+
+                            </p>
+                        </div>
+                    </a>
+                </div>
+
+                
+                <div class="col-lg-4 col-md-4 col-sm-4  text-center">
+                    <a href="/admin/showAddGoods">
+                        <div class="alert alert-warning">
+                            <i class="fa fa-briefcase fa-4x"></i>
+                            <span class="label label-success">添加商品</span>
+                            <p>
+                                添加商品请点击这里
+
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+
+    </section>
+    <section id="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-md-9 col-sm-9 ">
+
+                    <h3>所有用户列表  <span class="label label-danger"> 人数 : <%= result %></span></h3>
+
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>用户 ID</th>
+                                <th>类型</th>
+                                <th>账号</th>
+                                <th>注册时间</th>
+                                <th>密码</th>
+                                <th>操作</th>
+
+                            </tr>
+                            </thead>
+                            <tbody id="userData">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <ul class="pagination">
+                        <%for(var i=0;i<pageNum;i++){%>
+
+                        <li class="fenye"><a href="javascript:;"><%= i %></a></li>
+
+                        <% } %>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <a href="/" class=" label label-danger"><strong>退出后台管理</strong> </a>
+                    <div class="list-group">
+                        <a href="/admin" class="list-group-item manege">用户管理
+                        </a>
+
+                        <a href="/admin/goodList" class="list-group-item manege">商品管理</a>
+                        <a href="/admin/showAddGoods" class="list-group-item manege">添加商品</a>
+                        <a href="admin-change-password.html" class="list-group-item manege">修改密码</a>
+
+
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="footer">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10" >
+                    <h3>帮助指南</h3>
+                    <h4 style="display: inline-block;margin-right: 20px;"><span>电话: </span>+01-4589-987-567</h4>
+                    <h4 style="display: inline-block;margin-right: 20px;"><span>E-mail: </span>info@domain.com</h4>
+                    <p style="display: inline-block;margin-left: 100px;"> copy 2018 yourdomian </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!--  Jquery Core Script -->
+    <script src="/js/jquery1.min.js"></script>
+    <!--  Core Bootstrap Script -->
+    <script src="/js/bootstrap.js"></script>
+    <script src="js/underscore.js"></script>
+</body>
+</html>
+
+    <script type="text/template" id="muban">
+
+            <tr>
+                <td class="userId">{{= userId }}</td>
+                <td> <i class="fa fa-user" ></i> <span class="label label-success">{{= isadmin }}</span></td>
+                <td>{{= userName }}</td>
+                <td>{{= registerTime }}</td>
+                <td><a href="#" class="label label-default">{{= userPsw }} </a></td>
+                <td><a href="javascript:;"  class="removeUser label label-danger " onclick="removeUser()">删除 </a></td>
+            </tr>
+
+</script>
+<script>
+    var num=0;
+    getData(0);
+    function getData(page) {
+        $.get("/admin/getUserData?page="+page, (result) => {
+            console.log(result);
+            var compiled = _.template($("#muban").html());
+            for (var i = 0; i < result.length; i++) {
+                var html = compiled({
+                    "userId": result[i]._id,
+                    "isadmin":result[i].isadmin?"管理员":"普通用户",
+                    "registerTime":result[i].registerTime,
+                    "userName":result[i].userName,
+                    "userPsw":result[i].userPsw
+                });
+                $("#userData").append($(html));
+            }
+        });
+    }
+    $(".fenye:first").addClass("active");
+$(".fenye").click(function () {
+    num=$(this).index();
+    $("#userData").html("");
+    getData(num);
+    $(this).addClass("active").siblings().removeClass("active");
+
+});
+function removeUser() {
+    console.log("1111");
+    $.get("/admin/removeUser?userId="+$(".userId").html(),(result)=>{
+        if(result.status==1){
+            $("#userData").html("");
+            getData(num);
+        }
+        console.log(result);
+    })
+}
+
+
+</script>

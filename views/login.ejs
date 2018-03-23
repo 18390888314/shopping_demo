@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>login</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href='http://fonts.googleapis.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="js/jquery1.min.js"></script>
+	<!-- start menu -->
+	<link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+	<script type="text/javascript" src="js/megamenu.js"></script>
+	<script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
+	<script src="js/jquery.easydropdown.js"></script>
+</head>
+<body>
+<div class="header-top">
+	<div class="wrap">
+
+		<div class="cssmenu">
+			<ul>
+				<li class="active"><a href="login.ejs">账号信息</a></li> |
+				<li><a href="checkout.html">结账</a></li> |
+                <% if(login=="1"){  %>
+				<li><p>欢迎您,尊敬的</p></li>
+				<li><p href=""><%=userName %></p></li>
+                <%}else if(login=="2"){ %>
+				<li><p>管理员您好！</p></li>
+                <% }else {%>
+				<li><a href="/login">登录</a></li> |
+				<li><a href="/register">注册</a></li>
+                <% } %>
+			</ul>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<div class="header-bottom">
+	<div class="wrap">
+		<div class="header-bottom-left">
+			<div class="logo">
+				<a href="/"><img src="images/logo.png" alt=""/></a>
+			</div>
+			<div class="menu">
+				<ul class="megamenu skyblue">
+					<li class="active grid"><a href="index.ejs">主页</a></li>
+					<li><a class="color4" href="#">女装</a>
+
+					</li>
+					<li><a class="color5" href="#">男装</a>
+					</li>
+					<li><a class="color6" href="other.html">其他</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="header-bottom-right">
+			<div class="search">
+				<input type="text" name="s" class="textbox" value="Search" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Search';}">
+				<input type="submit" value="Subscribe" id="submit" name="submit">
+				<div id="response"> </div>
+			</div>
+			<div class="tag-list">
+				<ul class="icon1 sub-icon1 profile_img">
+					<li><a class="active-icon c2" href="#"> </a>
+
+					</li>
+				</ul>
+				<ul class="last"><li><a href="#">购物车(0)</a></li></ul>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<div class="register_account">
+	<div class="wrap" style="">
+		<h4 class="title">用户登录</h4>
+
+			<div class="col_1_of_2 span_1_of_2">
+				<div><input id="userName" type="text" value="账号" name="userName" style="  font-size: 0.95em;color: #777;padding: 8px;outline: none; margin: 10px 0;width: 91%;font-family: 'Exo 2', sans-serif;border: none;    -webkit-box-shadow: 0 0 2px #aaa;" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '账号';}"></div>
+				<div><input id="psw" type="password" placeholder="密码" style="  font-size: 0.95em;color: #777;padding: 8px;outline: none; margin: 10px 0;width: 91%;font-family: 'Exo 2', sans-serif;border: none;    -webkit-box-shadow: 0 0 2px #aaa;"  name="psw" onfocus="this.value = '';"></div>
+				<button class="grey">登录</button>
+			</div>
+			<div class="clear"></div>
+
+	</div>
+</div>
+<div class="footer" style="position:fixed;width: 100%;
+            bottom:0;">
+	<div class="footer-top">
+		<div class="wrap">
+			<div class="section group example">
+				<div class="col_1_of_2 span_1_of_2">
+					<ul class="f-list">
+						<li><img src="images/2.png"><span class="f-text">100元以上订单的免费运输</span><div class="clear"></div></li>
+					</ul>
+				</div>
+				<div class="col_1_of_2 span_1_of_2">
+					<ul class="f-list">
+						<li><img src="images/3.png"><span class="f-text">联系我们！ Tel- 123456789</span><div class="clear"></div></li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer-bottom">
+		<div class="wrap">
+			<div class="copy">
+				<p>Copyright &copy; 2018.Company name All rights reserved.</p>
+			</div>
+			<div class="f-list2">
+				<ul>
+					<li class="active"><a href="about.html">关于我们</a></li> |
+					<li><a href="delivery.html">退换货</a></li> |
+					<li><a href="contact.html">联系我们</a></li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+<div style="display:none"></div>
+</body>
+</html>
+<script>
+	$(".grey").click(function () {
+        $.post("/users/dologin",{
+            "userName":$("#userName").val(),
+            "psw":$("#psw").val()
+        },function (result) {
+			console.log(result);
+			if(result.status==1||result.status==2){
+                window.location.href="/";
+			    alert(result.message);
+			}
+        });
+    });
+
+</script>
